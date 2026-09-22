@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: qr-relay
+    runtime: node
+    plan: free
+    buildCommand: npm install --omit=dev
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: ALLOWED_ORIGINS
+        value: https://YOUR-USERNAME.github.io
