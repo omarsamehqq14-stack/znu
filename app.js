@@ -31,7 +31,7 @@ function handleMessage(m){
 function setPeer(ok,text){if(role==='sender'){ $('sendPeerDot').className='dot '+(ok?'ok':'bad');$('sendPeer').textContent=text } else {$('recvPeerDot').className='dot '+(ok?'ok':'');$('recvPeer').textContent=text}}
 function receivePayload(payload,at){
   $('recvPayload').textContent=payload; $('recvTime').textContent='Updated '+new Date(at||Date.now()).toLocaleTimeString();
-  const wrap=$('qr').parentElement; wrap.innerHTML='<div id=qrBox></div>'; try{new QRCode($('qrBox'),{text:payload,width:700,height:700,colorDark:'#000000',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M});toast('New QR received')}catch(e){toast('Could not generate QR')}
+  const wrap=document.querySelector('.qr-wrap'); wrap.innerHTML='<div id="qrBox"></div>'; try{new QRCode($('qrBox'),{text:payload,width:700,height:700,colorDark:'#000000',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M});toast('New QR received')}catch(e){toast('Could not generate QR')}
 }
 async function startCamera(){
   stopCamera();
